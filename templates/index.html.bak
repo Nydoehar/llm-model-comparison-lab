@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Response Evaluation Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>AI Response Evaluation Dashboard</h1>
+
+<form method="post">
+    <label for="prompt">Prompt:</label><br>
+    <textarea id="prompt" name="prompt" rows="5" cols="80">{{ prompt }}</textarea><br><br>
+
+    <label for="model_name">Model:</label>
+    <select id="model_name" name="model_name">
+        {% for m in model_choices %}
+        <option value="{{ m }}">{{ m }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit" name="generate">Generate Responses</button>
+</form>
+
+{% if responses %}
+<hr>
+<h2>Model Response</h2>
+{% for model, resp in responses.items() %}
+<h3>{{ model }}</h3>
+<pre>{{ resp }}</pre>
+
+<form method="post">
+    <!-- Hidden fields to carry data -->
+    <input type="hidden" name="prompt_hidden" value="{{ prompt }}">
+    <input type="hidden" name="model_name_hidden" value="{{ model }}">
+    <input type="hidden" name="response_hidden" value="{{ resp }}">
+
+    <h3>Evaluation</h3>
+    <label>Accuracy (1–5):</label>
+    <input type="number" name="accuracy" min="1" max="5" required><br>
+
+    <label>Completeness (1–5):</label>
+    <input type="number" name="completeness" min="1" max="5" required><br>
+
+    <label>Clarity (1–5):</label>
+    <input type="number" name="clarity" min="1" max="5" required><br>
+
+    <label>Guideline adherence / safety (1–5):</label>
+    <input type="number" name="guideline_adherence" min="1" max="5" required><br>
+
+    <label>Usefulness (1–5):</label>
+    <input type="number" name="usefulness" min="1" max="5" required><br>
+
+    <label>Comments:</label><br>
+    <textarea name="comment" rows="3" cols="60"></textarea><br><br>
+
+    <button type="submit" name="save">Save evaluation</button>
+</form>
+{% endfor %}
+{% endif %}
+
+<hr>
+<a href="{{ url_for('results') }}">View all evaluations</a>
+</body>
+</html>

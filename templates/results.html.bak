@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluation Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Evaluation Results</h1>
+
+<h2>Model statistics</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Model</th>
+        <th>Count</th>
+        <th>Accuracy avg</th>
+        <th>Completeness avg</th>
+        <th>Clarity avg</th>
+        <th>Guideline adherence avg</th>
+        <th>Usefulness avg</th>
+    </tr>
+    {% for model, st in stats.items() %}
+    <tr>
+        <td>{{ model }}</td>
+        <td>{{ st.count }}</td>
+        <td>{{ "%.2f"|format(st.accuracy_avg) }}</td>
+        <td>{{ "%.2f"|format(st.completeness_avg) }}</td>
+        <td>{{ "%.2f"|format(st.clarity_avg) }}</td>
+        <td>{{ "%.2f"|format(st.guideline_adherence_avg) }}</td>
+        <td>{{ "%.2f"|format(st.usefulness_avg) }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>All evaluations</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Timestamp</th>
+        <th>Prompt</th>
+        <th>Model</th>
+        <th>Scores</th>
+        <th>Comment</th>
+    </tr>
+    {% for ev in evaluations %}
+    <tr>
+        <td>{{ ev.timestamp }}</td>
+        <td>{{ ev.prompt }}</td>
+        <td>{{ ev.model_name }}</td>
+        <td>
+            Accuracy: {{ ev.scores.accuracy }},
+            Completeness: {{ ev.scores.completeness }},
+            Clarity: {{ ev.scores.clarity }},
+            Guideline adherence: {{ ev.scores.guideline_adherence }},
+            Usefulness: {{ ev.scores.usefulness }}
+        </td>
+        <td>{{ ev.comment }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+<a href="{{ url_for('index') }}">Back to dashboard</a>
+</body>
+</html>
