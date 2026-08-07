@@ -3,9 +3,8 @@
 A Flask web app for **comparing two Gemini models on the same prompt** using a structured evaluation rubric and a model-as-judge.  
 It’s designed to showcase skills in LLM evaluation, QA, and practical full‑stack development.
 
-> TIP: Add a small hero screenshot here once you have it.  
 > Example:
-> `![Dashboard overview](docs/images/dashboard-overview.png)`
+> `![Dashboard overview](docs/images/1-dashboard.png)`
 
 ---
 
@@ -36,17 +35,14 @@ It’s designed to showcase skills in LLM evaluation, QA, and practical full‑s
 
 ## Screenshots
 
-> Replace the placeholder bullets below with real images once you take them.  
-> Store images in `docs/images/` or similar and update the paths.
-
 - Prompt and responses (input + side‑by‑side answers)  
-  `![Prompt and responses](docs/images/prompt-and-responses.png)`
+  `![Prompt and responses](docs/images/2-Prompt_and_responses.png)`
 
 - Evaluation form (human scoring for both models)  
-  `![Evaluation form](docs/images/evaluation-form.png)`
+  `![Evaluation form](docs/images/3-Human_scoring.png)`
 
 - Results page (averages, human vs judge comparison)  
-  `![Results page](docs/images/results-page.png)`
+  `![Results page](docs/images/4-results.png)`
 
 ---
 
