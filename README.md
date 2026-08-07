@@ -42,7 +42,7 @@ It’s designed to showcase skills in LLM evaluation, QA, and practical full‑s
 ![Evaluation form](docs/images/3-Human_scoring.png)
 
 - Results page (averages, human vs judge comparison)  
-![Results page](docs/images/4-results.png)
+![Results page](docs/images/4-Results.png)
 
 ---
 
