@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Response Evaluation Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="summary-card">
+    <h1>AI Response Evaluation Dashboard</h1>
+    <p>
+        Compare two Gemini models on the same prompt using a structured evaluation rubric.
+        Generate both responses, score them side by side, and review the results over time.
+    </p>
+</div>
+
+<form method="post">
+    <h2>Generate responses</h2>
+
+    <label for="prompt">Prompt</label><br>
+    <textarea id="prompt" name="prompt" rows="6" placeholder="Enter the prompt you want to test">{{ prompt }}</textarea><br><br>
+
+    <button type="submit" name="generate">Generate Both Responses</button>
+</form>
+
+{% if responses %}
+    <h2>Model responses</h2>
+
+    {% for model, resp in responses.items() %}
+    <div class="summary-card">
+        <h3>{{ model }}</h3>
+        <pre style="white-space: pre-wrap; margin: 0;">{{ resp }}</pre>
+    </div>
+    {% endfor %}
+
+    <form method="post">
+        <input type="hidden" name="prompt_hidden" value="{{ prompt }}">
+
+        {% for model, resp in responses.items() %}
+            {% if loop.index == 1 %}
+                <input type="hidden" name="response_a_hidden" value="{{ resp }}">
+            {% elif loop.index == 2 %}
+                <input type="hidden" name="response_b_hidden" value="{{ resp }}">
+            {% endif %}
+        {% endfor %}
+
+        <h2>Evaluate responses</h2>
+
+        <label for="prompt_type">Prompt type</label><br>
+        <select id="prompt_type" name="prompt_type" required>
+            <option value="technical_support">Technical support</option>
+            <option value="reasoning">Reasoning</option>
+            <option value="summarization">Summarization</option>
+            <option value="coding">Coding</option>
+            <option value="instruction_following">Instruction following</option>
+            <option value="safety">Safety</option>
+            <option value="translation">Translation</option>
+            <option value="creative_writing">Creative writing</option>
+        </select><br><br>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <h3>Gemini 3.6 Flash</h3>
+
+                <label>Factual accuracy</label><br>
+                <input type="number" name="a_factual_accuracy" min="1" max="5" required><br>
+
+                <label>Instruction following</label><br>
+                <input type="number" name="a_instruction_following" min="1" max="5" required><br>
+
+                <label>Completeness</label><br>
+                <input type="number" name="a_completeness" min="1" max="5" required><br>
+
+                <label>Clarity and structure</label><br>
+                <input type="number" name="a_clarity_structure" min="1" max="5" required><br>
+
+                <label>Safety and appropriateness</label><br>
+                <input type="number" name="a_safety_appropriateness" min="1" max="5" required><br>
+
+                <label for="a_comment">Comment</label><br>
+                <textarea id="a_comment" name="a_comment" rows="4" placeholder="Add a short note about this response"></textarea>
+            </div>
+
+            <div class="summary-card">
+                <h3>Gemini 3.5 Flash-Lite</h3>
+
+                <label>Factual accuracy</label><br>
+                <input type="number" name="b_factual_accuracy" min="1" max="5" required><br>
+
+                <label>Instruction following</label><br>
+                <input type="number" name="b_instruction_following" min="1" max="5" required><br>
+
+                <label>Completeness</label><br>
+                <input type="number" name="b_completeness" min="1" max="5" required><br>
+
+                <label>Clarity and structure</label><br>
+                <input type="number" name="b_clarity_structure" min="1" max="5" required><br>
+
+                <label>Safety and appropriateness</label><br>
+                <input type="number" name="b_safety_appropriateness" min="1" max="5" required><br>
+
+                <label for="b_comment">Comment</label><br>
+                <textarea id="b_comment" name="b_comment" rows="4" placeholder="Add a short note about this response"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" name="save">Save evaluation</button>
+    </form>
+{% endif %}
+
+<hr>
+<p>
+    <a href="{{ url_for('results') }}">View all evaluations</a> |
+    <a href="{{ url_for('export_csv') }}">Download CSV</a>
+</p>
+</body>
+</html>
