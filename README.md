@@ -4,7 +4,7 @@ A Flask web app for **comparing two Gemini models on the same prompt** using a s
 It’s designed to showcase skills in LLM evaluation, QA, and practical full‑stack development.
 
 > Example:
-> `![Dashboard overview](docs/images/1-dashboard.png)`
+> ![Dashboard overview](docs/images/1-dashboard.png)
 
 ---
 
@@ -36,13 +36,13 @@ It’s designed to showcase skills in LLM evaluation, QA, and practical full‑s
 ## Screenshots
 
 - Prompt and responses (input + side‑by‑side answers)  
-  `![Prompt and responses](docs/images/2-Prompt_and_responses.png)`
+![Prompt and responses](docs/images/2-Prompt_and_responses.png)
 
-- Evaluation form (human scoring for both models)  
-  `![Evaluation form](docs/images/3-Human_scoring.png)`
+- Evaluation form (human scoring for both models)
+![Evaluation form](docs/images/3-Human_scoring.png)
 
 - Results page (averages, human vs judge comparison)  
-  `![Results page](docs/images/4-results.png)`
+![Results page](docs/images/4-results.png)
 
 ---
 
