@@ -54,19 +54,7 @@ It’s designed to showcase skills in LLM evaluation, QA, and practical full‑s
 
 The app is intentionally simple and easy to follow.
 
-```mermaid
-flowchart LR
-    U[User] --> W[Flask Web App]
-    W --> M1[Gemini 3.6 Flash]
-    W --> M2[Gemini 3.5 Flash-Lite]
-    M1 --> W
-    M2 --> W
-    W --> J[Judge Model (Gemini)]
-    J --> W
-    W --> F[(evaluations.json)]
-    W --> C[(CSV Export)]
-    W --> R[Results Page]
-```
+![chart](docs/images/mermaid-chart.png)
 
 ---
 
