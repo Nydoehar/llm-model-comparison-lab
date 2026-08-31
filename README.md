@@ -121,10 +121,6 @@ ai-response-eval-dashboard/
 └── README.md
 ```
 
-> TIP: If you add screenshots, you can also create `docs/images/` for them and show the structure here.
-
----
-
 ## Setup
 
 ### 1. Clone the repo
