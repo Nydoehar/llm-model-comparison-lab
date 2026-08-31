@@ -254,5 +254,3 @@ This is meant as a practical, portfolio‑ready example of how to evaluate AI mo
 
 Yann Da Silva Melo  
 [GitHub](https://github.com/Nydoehar) · [LinkedIn](https://linkedin.com/in/yann-silva-melo/)
-
-> TIP: Once you have screenshots and a demo, update the “Demo” and “Screenshots” sections. Those are the first things recruiters will look at when they open the repo.
