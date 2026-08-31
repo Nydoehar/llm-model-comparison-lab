@@ -120,6 +120,7 @@ ai-response-eval-dashboard/
 │   └── style.css          # Basic styling
 └── README.md
 ```
+---
 
 ## Setup
 
