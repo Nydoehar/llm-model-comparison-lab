@@ -10,7 +10,8 @@ It’s designed to showcase skills in LLM evaluation, QA, and practical full‑s
 
 ## Demo
 
-- Live demo: `https://llm-model-comparison-lab.onrender.com/`
+- Live demo: `!(https://llm-model-comparison-lab.onrender.com/)`
+- <a href="https://llm-model-comparison-lab.onrender.com/" target="_blank">Click me</a>
 - Demo video: `Coming soon`
 
 > TIP: Once you record a short (30–90s) screen recording, link it here so recruiters can see the app in action without running it.
